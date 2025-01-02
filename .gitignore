@@ -1,0 +1,32 @@
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Backup files created by Terraform
+*.backup
+
+# Terraform variable files with secrets
+*.tfvars
+*.tfvars.json
+
+# Local environment settings
+.terraform/
+.terraform.lock.hcl
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+*.log
+
+# Operating system files
+Thumbs.db
+*.bak
+
+# Ignore any files or directories starting with a dot
+.*
+
+# Allow .gitignore explicitly
+!.gitignore
