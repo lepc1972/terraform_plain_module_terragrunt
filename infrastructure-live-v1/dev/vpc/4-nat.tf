@@ -1,5 +1,5 @@
 resource "aws_eip" "nat" {
-    vpc = true
+    vpc = true      # This is required for the EIP to be associated with the NAT Gateway    
 
     tags = {
         Name = "dev-nat"
