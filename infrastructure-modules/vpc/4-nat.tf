@@ -1,23 +1,23 @@
-resource "aws_eip" "nat" {
+resource "aws_eip" "this" {
   vpc = true # This is required for the EIP to be associated with the NAT Gateway    
 
   tags = {
-    Name = "dev-nat"
+    Name = "$(var.env)-nat"
   }
 
 
 }
 
-resource "aws_nat_gateway" "nat" {
-  allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.public_us_east_2a.id
+resource "aws_nat_gateway" "this" {
+  allocation_id = aws_eip.this.id
+  subnet_id     = aws_subnet.public[0].id
 
   tags = {
-    Name = "dev-nat"
+    Name = "$(var.env)-nat"
   }
 
   depends_on = [
-    aws_internet_gateway.igw
+    aws_internet_gateway.this
   ]
 
 }
