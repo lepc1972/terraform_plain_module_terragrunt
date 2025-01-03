@@ -51,3 +51,31 @@ variable "subnet_ids" {
     type        = list(string)
   
 }
+variable "nodes_iam_policies" {
+    description = "The IAM policies to attach to the EKS nodes"
+    type        = list(string)
+    default = {
+        1 = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+        2 = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+        3 = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+        4 = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+    }
+  
+}
+variable "node_groups" {
+    description = "The configuration for the EKS node groups"
+    type        = map(object({
+        instance_type = string
+        desired_size  = number
+        max_size      = number
+        min_size      = number
+    }))
+  
+}   
+variable "enable_irsa" {
+    description = "Whether to enable IRSA for the EKS cluster"
+    type        = bool
+    default     = false
+  
+}   
+
